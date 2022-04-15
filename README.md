@@ -15,7 +15,7 @@ Python version: 2.7.5
 
 ### Compile the algorithm
 
-##### Baselines: BST BKT MVPT GNAT
+##### Baselines: BST BKT MVPT GNAT SPBT
 
 cd algorithm/baselines && make all
 
