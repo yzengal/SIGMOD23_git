@@ -33,9 +33,9 @@ TestSPBTpgm: the baseline in-memory SPB-Tree (with the [PGM-index](https://githu
 
 cd inMTREE && make all
 
-TestMtree: the baseline in-memory Mtree [[source](https://github.com/erdavila/M-Tree)] in the experiments
+TestMtree: the baseline [in-memory Mtree](https://github.com/erdavila/M-Tree) in the experiments
 
-##### Baselines: DSACLT+, LC, PMTREE, external-memory Mtree
+##### Baselines: DSACLT+, LC, PMTREE, external-memory Mtree, external-memory SPB-Tree
 
 cd DSACLT && make all
 
@@ -52,6 +52,10 @@ TestPMT: the baseline PMTree in the experiments
 cd extMTREE && make all
 
 TestMT: the baseline external-memory MTree in the experiments
+
+cd extSPBTREE && make all
+
+TestSPBT: the baseline external-memory SPB-Tree in the experiments
 
 ##### Our proposed algorithm: LiteHST
 
@@ -77,7 +81,7 @@ dataset/english: the English dataset used in the experiments
 
 dataset/synthetic: the BinStr dataset used in the experiments
 
-dataset/SIFT: the SIFT 100M dataset used in the experiments (too large, please refer to [[Source](http://corpus-texmex.irisa.fr/)])
+dataset/SIFT: the SIFT 100M dataset used in the experiments (too large, please refer to the [source](http://corpus-texmex.irisa.fr/))
 
 scripts/genSyntheticData.py: the data generator for the synthetic dataset, i.e., BinStr
 
