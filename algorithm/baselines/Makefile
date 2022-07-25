@@ -5,7 +5,7 @@ CFLAGS = --std=c++11 -W -Wall -Wno-sign-compare -O3 -s -pipe -mmmx -msse -msse2 
 MEM = -D WATCH_MEM
 DIM = 
 
-all: TestBST TestBKT TestMVPT TestGNAT TestSPBT
+all: TestBST TestBKT TestMVPT TestGNAT TestSPBTpgm
 monitor.o: monitor.h monitor.cpp
 	$(CXX) $(CFLAGS) -c monitor.cpp $(LIBS) $(MEM)
 	
@@ -36,11 +36,11 @@ BASELINE_BKT.o: BASELINE_BKT.h BASELINE_BKT.cpp global.h global.cpp global.o mon
 TestBKT: TestBKT.cpp global.h global.cpp global.o BASELINE_BKT.h BASELINE_BKT.cpp BASELINE_BKT.o monitor.h monitor.cpp monitor.o 
 	$(CXX) $(CFLAGS) -o TestBKT global.o monitor.o BASELINE_BKT.o TestBKT.cpp $(LIBS) $(MEM) $(DIM)
 
-TestSPBT: TestSPBtreePGM.cpp SPBtree_PGM.h global.h global.cpp global.o monitor.h monitor.cpp monitor.o 
-	$(CXX) -march=haswell -std=c++17 -W -Wall -Wno-sign-compare -O3 -s -pipe -mmmx -msse -msse2 -msse3 -o TestSPBT global.o monitor.o TestSPBtreePGM.cpp -I../include $(LIBS) $(MEM) $(DIM)
+TestSPBTpgm: TestSPBtreePGM.cpp SPBtree_PGM.h global.h global.cpp global.o monitor.h monitor.cpp monitor.o 
+	$(CXX) -march=haswell -std=c++17 -W -Wall -Wno-sign-compare -O3 -s -pipe -mmmx -msse -msse2 -msse3 -o TestSPBTpgm global.o monitor.o TestSPBtreePGM.cpp -I../include $(LIBS) $(MEM) $(DIM)
 
 .PHONY: clean
 clean:
 		-@rm *.o *.gcno *~ 2> /dev/null || true
-		-@rm TestBST TestBKT TestMVPT TestGNAT TestSPBT 2> /dev/null || true
+		-@rm TestBST TestBKT TestMVPT TestGNAT TestSPBTpgm 2> /dev/null || true
 		

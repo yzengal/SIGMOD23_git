@@ -1,7 +1,7 @@
 # Code for SIGMOD submission
 ========================================================================
 
-This repository stores the source code of the proposed algorithm (LiteHST) to solve the similarity search problem.
+This repository stores the source code of the proposed algorithm (LiteHST) to solve the similarity search problem. The code for the revision has also been updated.
 
 
 Usage of the source code
@@ -15,7 +15,7 @@ Python version: 2.7.5
 
 ### Compile the algorithm
 
-##### Baselines: BST BKT MVPT GNAT SPBT
+##### Baselines: BST, BKT, MVPT, GNAT, SPB-Tree+PGM-index
 
 cd algorithm/baselines && make all
 
@@ -27,7 +27,31 @@ TestGNAT: the baseline GNAT in the experiments
 
 TestMVPT: the baseline MVPT in the experiments
 
-TestSPBPT: the baseline SPBT in the experiments
+TestSPBTpgm: the baseline in-memory SPB-Tree (with the [PGM-index](https://github.com/gvinciguerra/PGM-index) enhancement) in the experiments
+
+##### Baseline: in-memory Mtree
+
+cd inMTREE && make all
+
+TestMtree: the baseline in-memory Mtree [[source](https://github.com/erdavila/M-Tree)] in the experiments
+
+##### Baselines: DSACLT+, LC, PMTREE, external-memory Mtree
+
+cd DSACLT && make all
+
+TestDSA: the baseline DSACLT+ in the experiments
+
+cd LC && make all
+
+TestLC: the baseline LC in the experiments
+
+cd PMTREE && make all
+
+TestPMT: the baseline PMTree in the experiments
+
+cd extMTREE && make all
+
+TestMT: the baseline external-memory MTree in the experiments
 
 ##### Our proposed algorithm: LiteHST
 
@@ -53,13 +77,17 @@ dataset/english: the English dataset used in the experiments
 
 dataset/synthetic: the BinStr dataset used in the experiments
 
+dataset/SIFT: the SIFT 100M dataset used in the experiments (too large, please refer to [[Source](http://corpus-texmex.irisa.fr/)])
+
 scripts/genSyntheticData.py: the data generator for the synthetic dataset, i.e., BinStr
 
 scripts/genQueryWorload.py: the data generator for the range queries and kNN queries
 
+scripts/processSIFT.cpp: the data generator for the SIFT dataset 
+
 ##### Note that the scripts can be used to generate more queries and we only provide a sample.
 
-### Run the algorithm
+### Run the algorithm for the in-memory experiments
 
 TestBST english: test the English dataset
 
@@ -69,7 +97,13 @@ TestBST color: test the Color dataset
 
 TestBST synthetic: test the BirStr dataset
 
-##### Note that TestBST can be replaced with TestGNAT, TestBKT, TestMVPT, TestSPBT, FastMap, Mtree and LiteHST.	
+##### Note that TestBST can be replaced with TestGNAT, TestBKT, TestMVPT, TestSPBTpgm, TestMtree, FastMap, Mtree, and LiteHST.	
+
+### Run the algorithm for the in-memory experiments
+
+TestLC: test the SIFT100M dataset
+
+##### Note that TestLC can be replaced with TestDSA, TestPMT, TestMT, TestSPBT, and TestLiteHST.	
 
 
 
